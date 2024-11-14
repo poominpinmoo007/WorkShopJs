@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS_JS2-5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <h6 class="m-0 ">School Name :</h6>
+                <span class="m-0 mx-2 fw-bold">Hogwart</span>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <h6 class="m-0 ">Type :</h6>
+                <span class="m-0 mx-2 fw-bold">Wizardry</span>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <h6 class="m-0 ">Establishment :</h6>
+                <span class="m-0 mx-2 fw-bold">Highland of Scotland</span>
+            </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center align-items-center flex-column">
+            <div class="my-3">
+                <label for="house">House : </label>
+                <select class="form-select" name="house" id="houseFilter">
+                    <option value="all" selected>All</option>
+                    <option value="Gryffindor">Gryffindor</option>
+                    <option value="Ravenclaw">Ravenclaw</option>
+                    <option value="Slytherin">Slytherin</option>
+                    <option value="Hufflepuff">Hufflepuff</option>
+                </select>
+            </div>
+            <div class="container-fluid m-0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>House</th>
+                            <th>Class</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                    <button class="btn btn-danger mx-1" onclick="clearTable()">Clear</button>
+                    <button class="btn btn-success mx-1" onclick="refreshTable()">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const students = {
+            fname: ['Harry',
+                'Hermione',
+                'Ronald',
+                'Draco',
+                'Teddy',
+                'Susan',
+                'Severus',
+                'Albus',
+                'Neville'],
+            lname: ['Potter',
+                'Granger',
+                'Weasley',
+                'Malfoy',
+                'Lupin',
+                'Bones',
+                'Snape',
+                'Dumbledore',
+                'Longbottom'],
+            house: ['Gryffindor',
+                'Gryffindor',
+                'Ravenclaw',
+                'Slytherin',
+                'Hufflepuff',
+                'Hufflepuff',
+                'Slytherin',
+                'Ravenclaw',
+                'Gryffindor'],
+            class: ['3', '3', '3', '4', '5', '2', '6', '6', '6',],
+            age: ['15', '15', '15', '16', '17', '14', '18', '18', '17'],
+        }
+
+        const houseFilter = document.getElementById('houseFilter');
+        const tbody = document.getElementById('tbody')
+
+        creatTable = (filterHouse) => {
+            tbody.innerHTML = '';
+            students.fname.forEach((_, index) => {
+                if (filterHouse === 'all' || students.house[index] === filterHouse) {
+                    let row = document.createElement('tr');
+
+                    let fnameCell = document.createElement('td');
+                    fnameCell.textContent = students.fname[index];
+                    row.appendChild(fnameCell);
+
+                    let lnameCell = document.createElement('td');
+                    lnameCell.textContent = students.lname[index];
+                    row.appendChild(lnameCell);
+
+                    let houseCell = document.createElement('td');
+                    houseCell.textContent = students.house[index];
+                    row.appendChild(houseCell);
+
+                    let classCell = document.createElement('td');
+                    classCell.textContent = students.class[index];
+                    row.appendChild(classCell);
+
+                    let ageCell = document.createElement('td');
+                    ageCell.textContent = students.age[index];
+                    row.appendChild(ageCell);
+
+                    tbody.appendChild(row);
+                }
+            });
+        }
+
+        clearTable=()=>{
+            tbody.innerHTML = '';
+        }
+
+        refreshTable=()=>{
+            creatTable('all')
+        }
+        
+        creatTable('all')
+        
+        houseFilter.addEventListener('change', (event) => {
+            creatTable(event.target.value);
+            console.log(event.target.value)
+        });
+
+        
+    </script>
+</body>
+
+</html>

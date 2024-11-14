@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS1_JS3</title>
+</head>
+<body>
+    <div>
+        <h4>JSON Day</h4>
+        <pre id="json-day"></pre> 
+    </div>
+    <div>
+        <h4>JSON Manager</h4>
+        <pre id="json-manager"></pre> 
+    </div>
+    <div>
+        <h4>JSON Employees</h4>
+        <pre id="json-employees"></pre> 
+    </div>
+    <script>
+        const day = {
+            sunday:['origin','red'],
+            monday:['white'],
+            tuesday:['pink','purple'],
+            wednesday:['green'],
+            thursday:['yellow'],
+            friday:['blue'],
+            saturday:['black']
+        }
+
+        const manager = {
+            name:"Poomin",
+            lastname:"Wonsanthia" ,
+            age:"22", 
+            salary:10000000
+        }
+
+        const employees = {
+            name:["Poomin","Connie","Randall ","Leroy","Terry"],
+            lastname:["Wonsanthia","Ward","Kilback","Schoen","Mayer"] ,
+            age:["22","23","30","31","29"], 
+            salary:[20000,5000,25000,30000,19000]
+        }
+
+        document.getElementById('json-day').textContent = JSON.stringify(day, null, 4);
+        document.getElementById('json-manager').textContent = JSON.stringify(manager, null, 4);
+        document.getElementById('json-employees').textContent = JSON.stringify(employees, null, 4);
+    </script>
+</body>
+</html>

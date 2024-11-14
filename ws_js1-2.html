@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS1_JS2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <div class="container-fluid d-flex my-5 justify-content-around">
+        <p>tag p 1</p>
+        <p>tag p 2</p>
+        <p>tag p 3</p>
+        <p>tag p 4</p>
+        <p>tag p 5</p>
+    </div>
+
+
+    <div>
+
+        <div>
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" id="fname" required>
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname" id="lname" required>
+        </div>
+        <div>
+            <label for="nickname">Nickname:</label>
+            <input type="text" name="nickname" id="nickname" required>
+            <label for="phone">Phone Number:</label>
+            <input type="text" name="phone" id="phone" required>
+        </div>
+        <div>
+            <label for="sex">Sex:</label>
+            <select name="sex" id="sex" required>
+                <option value="" selected>Select sex</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" required>
+        </div>
+        <button onclick="showInput()" class="btn btn-success">Submit</button>
+
+
+        <div class="my-2">
+            <h4>Tag P จำนวน : <span id="countP"></span></h4>
+            <h4>ข้อความ : <span id="textP"></span></h4>
+        </div>
+
+        <div class="my-2">
+            <h4>First Name: <span id="showFname"></span></h4>
+            <h4>Last Name : <span id="showLname"></span></h4>
+            <h4>Nickname: <span id="showNickname"></span></h4>
+            <h4>Phone Number : <span id="showPhone"></span></h4>
+            <h4>Sex: <span id="showSex"></span></h4>
+            <h4>Age : <span id="showAge"></span></h4>
+        </div>
+
+        <div class="card p-5 m-4" onmouseover="color1(this)" onmouseout="color2(this)">
+            Event
+        </div>
+
+    </div>
+
+    <script>
+        const tagP = document.getElementsByTagName('p')
+        const input_fname = document.getElementById('fname')
+        const input_lname = document.getElementById('lname')
+        const nickname = document.getElementById('nickname')
+        const phone = document.getElementById('phone')
+        const sex = document.getElementById('sex')
+        const age = document.getElementById('age')
+
+        const countP = document.getElementById('countP')
+        const textP = document.getElementById('textP')
+
+        showTag = () => {
+            countP.innerHTML = tagP.length
+            textP.innerHTML = tagP[0].textContent
+            console.log(tagP)
+        }
+
+        showInput = () => {
+            document.getElementById('showFname').innerHTML = input_fname.value
+            document.getElementById('showLname').innerHTML = input_lname.value
+            document.getElementById('showNickname').innerHTML = nickname.value
+            document.getElementById('showPhone').innerHTML = phone.value
+            document.getElementById('showSex').innerHTML = sex.value
+            document.getElementById('showAge').innerHTML = age.value
+        }
+
+        color1=(box)=>{
+            box.style.background = "red";
+        }
+
+        color2=(box)=>{
+            box.style.background = "blue"
+        }
+
+
+
+
+        showTag()
+
+    </script>
+</body>
+
+</html>
