@@ -60,65 +60,99 @@
     </div>
 
     <script>
-        const students = {
-            fname: ['Harry',
-                'Hermione',
-                'Ronald',
-                'Draco',
-                'Teddy',
-                'Susan',
-                'Severus',
-                'Albus',
-                'Neville'],
-            lname: ['Potter',
-                'Granger',
-                'Weasley',
-                'Malfoy',
-                'Lupin',
-                'Bones',
-                'Snape',
-                'Dumbledore',
-                'Longbottom'],
-            house: ['Gryffindor',
-                'Gryffindor',
-                'Ravenclaw',
-                'Slytherin',
-                'Hufflepuff',
-                'Hufflepuff',
-                'Slytherin',
-                'Ravenclaw',
-                'Gryffindor'],
-            class: ['3', '3', '3', '4', '5', '2', '6', '6', '6',],
-            age: ['15', '15', '15', '16', '17', '14', '18', '18', '17'],
-        }
+        const students = [
+            {
+                "fname": "Harry",
+                "lname": "Potter",
+                "house": "Gryffindor",
+                "class": "3",
+                "age": "15"
+            },
+            {
+                "fname": "Hermione",
+                "lname": "Granger",
+                "house": "Gryffindor",
+                "class": "3",
+                "age": "15"
+            },
+            {
+                "fname": "Ronald",
+                "lname": "Weasley",
+                "house": "Ravenclaw",
+                "class": "3",
+                "age": "15"
+            },
+            {
+                "fname": "Draco",
+                "lname": "Malfoy",
+                "house": "Slytherin",
+                "class": "4",
+                "age": "16"
+            },
+            {
+                "fname": "Teddy",
+                "lname": "Lupin",
+                "house": "Hufflepuff",
+                "class": "5",
+                "age": "17"
+            },
+            {
+                "fname": "Susan",
+                "lname": "Bones",
+                "house": "Hufflepuff",
+                "class": "2",
+                "age": "14"
+            },
+            {
+                "fname": "Severus",
+                "lname": "Snape",
+                "house": "Slytherin",
+                "class": "6",
+                "age": "18"
+            },
+            {
+                "fname": "Albus",
+                "lname": "Dumbledore",
+                "house": "Ravenclaw",
+                "class": "6",
+                "age": "18"
+            },
+            {
+                "fname": "Neville",
+                "lname": "Longbottom",
+                "house": "Gryffindor",
+                "class": "6",
+                "age": "17"
+            }
+        ]
 
         const houseFilter = document.getElementById('houseFilter');
         const tbody = document.getElementById('tbody')
 
         creatTable = (filterHouse) => {
             tbody.innerHTML = '';
-            students.fname.forEach((_, index) => {
-                if (filterHouse === 'all' || students.house[index] === filterHouse) {
+            students.forEach(student => {
+                if (filterHouse === 'all' || student.house === filterHouse) {
                     let row = document.createElement('tr');
 
                     let fnameCell = document.createElement('td');
-                    fnameCell.textContent = students.fname[index];
+                    fnameCell.textContent = student.fname;
                     row.appendChild(fnameCell);
 
                     let lnameCell = document.createElement('td');
-                    lnameCell.textContent = students.lname[index];
+                    lnameCell.textContent = student.lname;
                     row.appendChild(lnameCell);
 
                     let houseCell = document.createElement('td');
-                    houseCell.textContent = students.house[index];
+                    houseCell.textContent = student.house;
                     row.appendChild(houseCell);
 
                     let classCell = document.createElement('td');
-                    classCell.textContent = students.class[index];
+                    classCell.textContent = student.class;
                     row.appendChild(classCell);
 
                     let ageCell = document.createElement('td');
-                    ageCell.textContent = students.age[index];
+                    ageCell.textContent = student.age;
                     row.appendChild(ageCell);
 
                     tbody.appendChild(row);
@@ -126,22 +160,22 @@
             });
         }
 
-        clearTable=()=>{
+        clearTable = () => {
             tbody.innerHTML = '';
         }
 
-        refreshTable=()=>{
+        refreshTable = () => {
             creatTable('all')
         }
-        
+
         creatTable('all')
-        
+
         houseFilter.addEventListener('change', (event) => {
             creatTable(event.target.value);
             console.log(event.target.value)
         });
 
-        
+
     </script>
 </body>
 
